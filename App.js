@@ -9,8 +9,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <StatusBar style="auto" />
       <Stack.Navigator>
-        <StatusBar style="auto" />
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>

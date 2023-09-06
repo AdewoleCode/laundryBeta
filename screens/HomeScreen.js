@@ -14,6 +14,7 @@ const HomeScreen = () => {
 
     const checkLocationServiceEnabled = async () => {
         let enabled = await Location.hasServicesEnabledAsync()
+        console.log(enabled);
 
         if (!enabled) {
             Alert.alert(
@@ -36,6 +37,7 @@ const HomeScreen = () => {
     const getCurrentLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync()
 
+        console.log(status);
         if (status !== "granted") {
             Alert.alert(
                 'Permission denied',
@@ -52,13 +54,15 @@ const HomeScreen = () => {
         }
 
         const { coords } = await Location.getCurrentPositionAsync()
-
+        console.log(coords);
         if (coords) {
             const { latitude, longitude } = coords
 
             let response = await Location.reverseGeocodeAsync({
                 latitude, longitude
             })
+
+            console.log(response);
 
             for (let item of response) {
                 let address = `${item.name} ${item.city} ${item.postalCode}`
